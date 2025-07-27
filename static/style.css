@@ -1,0 +1,135 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Baloo Bhai 2", sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+  padding: 40px;
+}
+
+/* Background Video */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.header-box {
+  background: linear-gradient(90deg, #1a1a1a, #d4af37);
+  background-color: #222; /* You can change to any color you like */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
+
+.header-box h1 {
+  font-size: 2.8rem;
+  margin: 0;
+  font-family: 'Baloo Bhai 2', cursive;
+}
+
+.header-box h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 8px;
+  color: #ffcc70; /* subtle highlight */
+}
+
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 40px auto 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+}
+
+form label {
+  font-weight: bold;
+  color: #333;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Button Styling */
+button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Results Box */
+.result-box {
+  background-color: #edf2f4;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  line-height: 1.8;
+}
+
+/* Tips Section */
+.tips {
+  background-color: #e0f7fa;
+  border-left: 5px solid #00acc1;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Alerts */
+.alert {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.video-header{
+  position: relative;
+  width: 100%;
+  height: 250px; /* Adjust as needed */
+  overflow: hidden;
+  
+}

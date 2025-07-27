@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finance Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Baloo+Bhaijaan+2:wght@400..800&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Background video -->
+  <div class="video-header">
+    <video autoplay muted loop id="bg-video">
+      <source src="{{ url_for('static', filename='dollarbills.mp4') }}" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="container">
+    <div class="header-box">
+      <h1 id="heading"></h1>
+      <h2 id="subheading"></h2>
+    </div>
+
+    <!-- Form -->
+    <form method="POST">
+      <input type="number" name="income" placeholder="Monthly Income" required>
+      <input type="number" name="food" placeholder="Food Expense" required>
+      <input type="number" name="rent" placeholder="Rent" required>
+      <input type="number" name="clothes" placeholder="Clothes" required>
+      <input type="number" name="bills" placeholder="Phone Bills" required>
+      <input type="number" name="others" placeholder="Other Expenses" required>
+
+      <label for="tips">Do you want money-saving tips?</label>
+      <select name="tips" id="tips" required>
+        <option value="">--Select--</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <button type="submit">Calculate</button>
+      <input type="hidden" name="form_type" value="calc">
+
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-messages">
+      {% for message in messages %}
+      <p style="color: green;">{{ message|safe }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Results Section -->
+    {% if savings is defined %}
+    <div class="result-box">
+      <p>You spend {{ p1 }}% of your income on <b>food</b></p>
+      <p>You spend {{ p2 }}% of your income on <b>rent</b></p>
+      <p>You spend {{ p3 }}% of your income on <b>clothes</b></p>
+      <p>You spend {{ p4 }}% of your income on <b>bills</b></p>
+      <p>You spend {{ p5 }}% of your income on <b>others</b></p>
+      <p>Your <b>savings</b> are {{ p6 }}%</p>
+    </div>
+
+    {% endif %}
+
+    {% if messages %}
+    {% for msg in messages %}
+    <p class="alert">{{ msg }}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% if tip_summary %}
+    <div class="tips">{{ tip_summary|safe }}</div>
+    {% endif %}
+  </div>
+
+
+  <div id="email-section" {% if show_email_section %}style="display: block;" {% else %}style="display: none;" {% endif
+    %}>
+    <form action="/" method="POST"
+      style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
+
+      <label for="user_email" style="font-weight: bold; font-size: 18px;">Want a copy of this report? 📩</label>
+
+      <input type="email" name="email" placeholder="Enter your email" required
+        style="padding: 10px; width: 280px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;">
+
+      
+
+      <button type="submit"
+        style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Send Report
+      </button>
+      <input type="hidden" name="form_type" value="email">
+      <input type="hidden" name="income" value="{{ income }}">
+      <input type="hidden" name="food" value="{{ food }}">
+      <input type="hidden" name="rent" value="{{ rent }}">
+      <input type="hidden" name="clothes" value="{{ clothes }}">
+      <input type="hidden" name="bills" value="{{ bills }}">
+      <input type="hidden" name="others" value="{{ others }}">
+
+
+    </form>
+  </div>
+
+  </div>
+
+  <!-- JavaScript Typing Animation -->
+  <script>
+    const text1 = "Finance Tracker 💰";
+    const text2 = "Track your finances here";
+    let i = 0;
+    let j = 0;
+
+    function typeHeading() {
+      if (i < text1.length) {
+        document.getElementById("heading").innerHTML += text1.charAt(i);
+        i++;
+        setTimeout(typeHeading, 150);
+      } else {
+        setTimeout(typeSubheading, 300);
+      }
+    }
+
+    function typeSubheading() {
+      if (j < text2.length) {
+        document.getElementById("subheading").innerHTML += text2.charAt(j);
+        j++;
+        setTimeout(typeSubheading, 100);
+      }
+    }
+
+    window.onload = typeHeading;
+
+  </script>
+</body>
+
+</html>
