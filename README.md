@@ -14,6 +14,19 @@ It helps users record their income, expenses, and see spending insights with gra
 - Flask
 - HTML & CSS
 
+# Install dependencies
+- Make sure you have Python installed. Then run in bash:-
+    - pip install -r requirements.txt
+
+# Run the app in bash:-
+- python app.py
+
+# Open in your browser:-
+- Go to http://127.0.0.1:5000 to start using the app.
+
+# screenshot
+![App Screenshot](screenshot.png)
+
 ---
 
 Made with ❤️ by Ishavi Gupta
