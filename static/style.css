@@ -133,3 +133,14 @@ button:hover {
   overflow: hidden;
   
 }
+.tips-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.65);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.tips-content b {
+  color: #ffd700; 
+}

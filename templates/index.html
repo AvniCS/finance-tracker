@@ -80,7 +80,12 @@
     {% endif %}
 
     {% if tip_summary %}
-    <div class="tips">{{ tip_summary|safe }}</div>
+    <div class="tips-box">
+      <h3 style="color: white;">Tips:</h3>
+      <div class="tips-content" style="color: #f9f9f9; font-size: 1.1rem; line-height: 1.6;">
+        {{ tip_summary | safe }}
+      </div>
+    </div>
     {% endif %}
   </div>
 
@@ -95,7 +100,7 @@
       <input type="email" name="email" placeholder="Enter your email" required
         style="padding: 10px; width: 280px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;">
 
-      
+
 
       <button type="submit"
         style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">

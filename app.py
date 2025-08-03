@@ -74,6 +74,7 @@ def index():
             max_category = sorted_percentages[0][1]
             min_category = sorted_percentages[-1][1]
 
+            # Generate tips as proper HTML
             tips = []
             tips.append(f"You spend the most on <b>{max_category}</b> and the least on <b>{min_category}</b>.")
 
@@ -85,7 +86,11 @@ def index():
                 elif 10 <= percent <= 20:
                     tips.append(f"<b>{category}</b> expenses are moderate. Keep monitoring.")
 
-            tip_summary = "<br>".join(tips)
+            # Create proper HTML list format
+            tip_summary = "<ul>" + "".join([f"<li>{tip}</li>" for tip in tips]) + "</ul>"
+
+            # For email report, use plain text version
+            tips_plain_text = "\n".join([f"• {tip.replace('<b>', '').replace('</b>', '')}" for tip in tips])
 
             report_text = f"""Hi there 👋,
 
@@ -101,7 +106,7 @@ Other Expenses: ₹{others} ({p5:.2f}%)
 Savings: ₹{savings} ({p6:.2f}%)
 
 Tips:
-{tip_summary}
+{tips_plain_text}
 
 Thanks for using our app! 💸
 """
@@ -139,7 +144,5 @@ Thanks for using our app! 💸
             return render_template("index.html")
 
     return render_template("index.html")
-
-
 if __name__ == "__main__":
     app.run(debug=True)
